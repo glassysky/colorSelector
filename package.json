@@ -1,0 +1,24 @@
+{
+  "name": "color-selector",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glassysky/colorSelector.git"
+  },
+  "author": "glassyskyCUI",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/glassysky/colorSelector/issues"
+  },
+  "homepage": "https://github.com/glassysky/colorSelector#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-ruby-sass": "^2.0.6"
+  }
+}
