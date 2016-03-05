@@ -4,19 +4,28 @@ var ReactDOM = require('react-dom');
 var ColorPanel = require('./ColorPanel');
 var InfoPanel = require('./InfoPanel');
 
+// 方法
+var common = require('./common');
+
 var Background = React.createClass({
-	getInitialState: function() {
+	getInitialState: function(){
     	return {
-    		R: 0,
-    		G: 0,
-    		B: 0
+    		RGB: ["0","0","0"]
     	};
   	},
+  	handleUserInput: function(arr){
+  		var RGB = this.state.RGB;
+  		RGB[arr[0]] = arr[1];
+  		this.setState({
+  			RGB: RGB
+  		});
+  	},
 	render: function(){
+		console.log(this.state.RGB);
 		return (
 			<div>
-				<InfoPanel />
-				<ColorPanel />
+				<InfoPanel RGB={this.state.RGB} onUserInput={this.handleUserInput}/>
+				<ColorPanel RGB={this.state.RGB} />
 			</div>
 		);
 	}

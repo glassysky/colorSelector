@@ -1,9 +1,11 @@
 var React = require('react');
+var common = require('./common');
 
 var MainColor = React.createClass({
 	render: function(){
+		var rgb = common.rbgIntoH(this.props.RGB);
 		var style = {
-			"backgroundColor": "red"
+			"backgroundColor": rgb
 		};
 
 		return (
@@ -12,6 +14,7 @@ var MainColor = React.createClass({
 	}
 });
 
+// 互补色、相似色、三角色、分散互补色、四方色、四方补色
 var RecommendColor = React.createClass({
 	render: function(){
 		var style = [
@@ -19,7 +22,8 @@ var RecommendColor = React.createClass({
 			{"backgroundColor": "#000033"}, 
 			{"backgroundColor": "#003300"}, 
 			{"backgroundColor": "#003333"}, 
-			{"backgroundColor": "#330000"}
+			{"backgroundColor": "#330000"},
+			{"backgroundColor": "#330033"}
 		];
 
 		return (
@@ -45,7 +49,7 @@ var ColorPanel = React.createClass({
 	render: function(){
 		return (
 			<div id="color-panel">
-				<MainColor />
+				<MainColor RGB={this.props.RGB}/>
 				<RecommendColor />
 			</div>
 		);

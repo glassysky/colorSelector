@@ -9,6 +9,7 @@ html,body{margin: 0;padding: 0;height: 100%;}
 @consoleColor: #00D8FF;
 @consoleBgc: #222;
 @consoleHeight: 200px;
+@mainColorSide: 500px;
 
 
 #react {
@@ -83,7 +84,8 @@ html,body{margin: 0;padding: 0;height: 100%;}
 
 	#color-panel {
 		.main-color {
-			width: 50%;
+			width: @mainColorSide;
+			height: @mainColorSide;
 			margin: 0 auto;
 		}
 
