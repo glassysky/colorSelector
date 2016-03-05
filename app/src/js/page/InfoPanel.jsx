@@ -11,11 +11,13 @@ var InputItem = React.createClass({
 	handleChange: function(event){
 		var value = event.target.value;
 		var index = this.props.index;
-		if(value < 0){
+
+		if(value < 0 || value === ""){
 			value = 0;
-		} else if (value > 255){
+		} else if (value > 255 || value.length === 4){
 			value = 255;
 		}
+		
 		this.setState({
 			value: value
 		});
@@ -69,10 +71,15 @@ var InfoConsole = React.createClass({
 	render: function(){
 		var colorRGB = this.props.colorRGB;
 
-		colorRGB = common.rgbIntoString(colorRGB);
+		colorInH = common.rgbIntoH(colorRGB);
+		colorInRGB = common.rgbIntoString(colorRGB);
+		
 		return (
 			<div className="console-panel">
-			{colorRGB}
+				<div className="text-wrap">
+					<span>{colorInRGB}</span>
+					<span>{colorInH}</span>
+				</div>
 			</div>
 		);
 	}

@@ -43,7 +43,7 @@ webpackJsonp([0,1],[
 
 
 	// module
-	exports.push([module.id, "html,\nbody {\n  margin: 0;\n  padding: 0;\n  height: 100%;\n}\n#react {\n  height: 100%;\n  padding: 20px;\n}\n#react #color-panel {\n  margin-right: 320px;\n}\n#react #info-panel {\n  float: right;\n  width: 300px;\n  border: 3px solid #aaa;\n  border-radius: 5px;\n}\n#react #info-panel h1 {\n  text-align: center;\n  color: #555;\n}\n#react #info-panel .input-wrap {\n  padding: 0 20px;\n}\n#react #info-panel .input-wrap .input-item {\n  border: 1px solid #aaa;\n  border-radius: 2px;\n  margin: 10px 0;\n}\n#react #info-panel .input-wrap .input-item .add-on {\n  display: inline-block;\n  height: 36px;\n  line-height: 34px;\n  background-color: #79CCD6;\n  text-align: center;\n  font-size: 1em;\n  font-weight: 700;\n  color: #fff;\n}\n#react #info-panel .input-wrap .input-item .add-on-left {\n  width: 30px;\n}\n#react #info-panel .input-wrap .input-item .add-on-right {\n  width: 50px;\n}\n#react #info-panel .input-wrap .input-item input {\n  height: 30px;\n  width: 174px;\n  text-align: center;\n  font-size: 1em;\n}\n#react #info-panel .console-panel {\n  height: 200px;\n  line-height: 200px;\n  margin: 20px;\n  border: 1px solid #aaa;\n  box-shadow: 1px 1px 1px 1px #aaa;\n  color: #00D8FF;\n  font-size: 1.2em;\n  font-weight: 400;\n  text-align: center;\n  background-color: #222;\n}\n#react #color-panel .main-color {\n  width: 500px;\n  height: 500px;\n  margin: 0 auto;\n}\n#react #color-panel .recommend-color-list li {\n  list-style-type: none;\n}\n", ""]);
+	exports.push([module.id, "html,\nbody {\n  margin: 0;\n  padding: 0;\n  height: 100%;\n}\n#react {\n  height: 100%;\n  padding: 20px;\n}\n#react #color-panel {\n  margin-right: 320px;\n}\n#react #info-panel {\n  float: right;\n  width: 300px;\n  border: 3px solid #aaa;\n  border-radius: 5px;\n}\n#react #info-panel h1 {\n  text-align: center;\n  color: #555;\n}\n#react #info-panel .input-wrap {\n  padding: 0 20px;\n}\n#react #info-panel .input-wrap .input-item {\n  border: 1px solid #aaa;\n  border-radius: 2px;\n  margin: 10px 0;\n}\n#react #info-panel .input-wrap .input-item .add-on {\n  display: inline-block;\n  height: 36px;\n  line-height: 34px;\n  background-color: #79CCD6;\n  text-align: center;\n  font-size: 1em;\n  font-weight: 700;\n  color: #fff;\n}\n#react #info-panel .input-wrap .input-item .add-on-left {\n  width: 30px;\n}\n#react #info-panel .input-wrap .input-item .add-on-right {\n  width: 50px;\n}\n#react #info-panel .input-wrap .input-item input {\n  height: 30px;\n  width: 174px;\n  text-align: center;\n  font-size: 1em;\n}\n#react #info-panel .console-panel {\n  height: 200px;\n  line-height: 150px;\n  margin: 20px;\n  border: 1px solid #aaa;\n  box-shadow: 1px 1px 1px 1px #aaa;\n  color: #00D8FF;\n  font-size: 1.2em;\n  font-weight: 400;\n  text-align: center;\n  background-color: #222;\n}\n#react #info-panel .console-panel .text-wrap {\n  width: 150px;\n  margin: 0 auto;\n}\n#react #info-panel .console-panel .text-wrap span {\n  display: block;\n  height: 20px;\n  margin: 10px;\n}\n#react #color-panel .main-color {\n  width: 300px;\n  height: 300px;\n  margin: 0 auto;\n  border-radius: 10px;\n}\n#react #color-panel .recommend-color-list {\n  width: 80%;\n  min-width: 600px;\n  margin: 20px auto;\n  padding-left: 0;\n  overflow: hidden;\n}\n#react #color-panel .recommend-color-list li {\n  list-style-type: none;\n  width: 33.33%;\n  min-width: 200px;\n  float: left;\n}\n#react #color-panel .recommend-color-list li .recommend-color-info h3 {\n  text-align: center;\n  color: #00D8FF;\n}\n#react #color-panel .recommend-color-list li .recommend-color-info .recommend-color-match {\n  margin: 0 auto;\n  width: 190px;\n  height: 200px;\n}\n", ""]);
 
 	// exports
 
@@ -20018,7 +20018,7 @@ webpackJsonp([0,1],[
 
 	var MainColor = React.createClass({ displayName: "MainColor",
 		render: function () {
-			var rgb = common.rbgIntoH(this.props.colorRGB);
+			var rgb = common.rgbIntoH(this.props.colorRGB);
 
 			var style = {
 				"backgroundColor": rgb
@@ -20028,27 +20028,65 @@ webpackJsonp([0,1],[
 		}
 	});
 
-	// 互补色、相似色、三角色、分散互补色、四方色、四方补色
-	var RecommendColor = React.createClass({ displayName: "RecommendColor",
+	var RecommendColorInfo = React.createClass({ displayName: "RecommendColorInfo",
 		render: function () {
-			var style = [{ "backgroundColor": "#000000" }, { "backgroundColor": "#000033" }, { "backgroundColor": "#003300" }, { "backgroundColor": "#003333" }, { "backgroundColor": "#330000" }, { "backgroundColor": "#330033" }];
+			var info = this.props.info;
+			var title = info.title;
+			var color = info.color;
+			var number = color.length;
 
-			return React.createElement("ul", { className: "recommend-color-list" }, style.map(function (color, key) {
-				return React.createElement(RecommendListItem, { key: key, styleData: style[key] });
-			}));
+			return React.createElement("div", { className: "recommend-color-info" }, React.createElement("h3", null, title), React.createElement("div", { className: "recommend-color-match" }, color.map(function (color, key) {
+				var style = {
+					"width": 1 / number * 100 + "%",
+					"height": "100%",
+					"display": "inline-block",
+					"backgroundColor": color
+				};
+				return React.createElement("div", { style: style, key: key });
+			})), React.createElement("div", { className: "recommend-color-value" }));
 		}
 	});
 
 	var RecommendListItem = React.createClass({ displayName: "RecommendListItem",
 		render: function () {
-			return React.createElement("li", { style: this.props.styleData });
+			var info = this.props.info;
+			return React.createElement("li", null, React.createElement(RecommendColorInfo, { info: info }));
+		}
+	});
+
+	// 互补色、相似色、三角色、分散互补色、四方色、四方补色
+	var RecommendColor = React.createClass({ displayName: "RecommendColor",
+		render: function () {
+			var info = [{
+				"title": "Complementarity",
+				"color": ["red", "blue"]
+			}, {
+				"title": "Similarity",
+				"color": ["red", "blue"]
+			}, {
+				"title": "Triangle",
+				"color": ["red", "blue", "yellow"]
+			}, {
+				"title": "Dispers",
+				"color": ["red", "blue", "yellow"]
+			}, {
+				"title": "Square",
+				"color": ["red", "blue", "yellow", "green"]
+			}, {
+				"title": "SimilaritySquare",
+				"color": ["red", "blue", "yellow", "green"]
+			}];
+
+			return React.createElement("ul", { className: "recommend-color-list" }, info.map(function (color, key) {
+				return React.createElement(RecommendListItem, { key: key, info: info[key] });
+			}));
 		}
 	});
 
 	var ColorPanel = React.createClass({ displayName: "ColorPanel",
 
 		render: function () {
-			return React.createElement("div", { id: "color-panel" }, React.createElement(MainColor, { colorRGB: this.props.colorRGB }), React.createElement(RecommendColor, null));
+			return React.createElement("div", { id: "color-panel" }, React.createElement(MainColor, { colorRGB: this.props.colorRGB }), React.createElement(RecommendColor, { colorRGB: this.props.colorRGB }));
 		}
 	});
 
@@ -20066,7 +20104,7 @@ webpackJsonp([0,1],[
 			return str;
 		};
 
-		this.rbgIntoH = function (RGB) {
+		this.rgbIntoH = function (RGB) {
 			var colorRGB = RGB.concat();
 
 			function makeUpNumber(num) {
@@ -20106,11 +20144,13 @@ webpackJsonp([0,1],[
 		handleChange: function (event) {
 			var value = event.target.value;
 			var index = this.props.index;
-			if (value < 0) {
+
+			if (value < 0 || value === "") {
 				value = 0;
-			} else if (value > 255) {
+			} else if (value > 255 || value.length === 4) {
 				value = 255;
 			}
+
 			this.setState({
 				value: value
 			});
@@ -20150,8 +20190,10 @@ webpackJsonp([0,1],[
 		render: function () {
 			var colorRGB = this.props.colorRGB;
 
-			colorRGB = common.rgbIntoString(colorRGB);
-			return React.createElement("div", { className: "console-panel" }, colorRGB);
+			colorInH = common.rgbIntoH(colorRGB);
+			colorInRGB = common.rgbIntoString(colorRGB);
+
+			return React.createElement("div", { className: "console-panel" }, React.createElement("div", { className: "text-wrap" }, React.createElement("span", null, colorInRGB), React.createElement("span", null, colorInH)));
 		}
 	});
 

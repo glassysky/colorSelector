@@ -6,7 +6,7 @@ function method(){
 		return str;
 	};
 
-	this.rbgIntoH = function(RGB){
+	this.rgbIntoH = function(RGB){
 		var colorRGB = RGB.concat();
 
 		function makeUpNumber(num){

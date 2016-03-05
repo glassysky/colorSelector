@@ -9,7 +9,8 @@ html,body{margin: 0;padding: 0;height: 100%;}
 @consoleColor: #00D8FF;
 @consoleBgc: #222;
 @consoleHeight: 200px;
-@mainColorSide: 500px;
+@mainColorSide: 300px;
+@h3Color: #00D8FF;
 
 
 #react {
@@ -69,7 +70,7 @@ html,body{margin: 0;padding: 0;height: 100%;}
 
 		.console-panel {
 			height: @consoleHeight;
-			line-height: @consoleHeight;
+			line-height: 150px;
 			margin: 20px;
 			border: 1px solid @lightGrey;
 			box-shadow: 1px 1px 1px 1px @lightGrey;
@@ -78,6 +79,17 @@ html,body{margin: 0;padding: 0;height: 100%;}
 			font-weight: 400;
 			text-align: center;
 			background-color: @consoleBgc;
+
+			.text-wrap {
+				width: 150px;
+				margin: 0 auto;
+
+				span {
+					display: block;
+					height: 20px;
+					margin: 10px;
+				}
+			}
 		}
 
 	}
@@ -87,11 +99,34 @@ html,body{margin: 0;padding: 0;height: 100%;}
 			width: @mainColorSide;
 			height: @mainColorSide;
 			margin: 0 auto;
+			border-radius: 10px;
 		}
 
 		.recommend-color-list {
+			width: 80%;
+			min-width: 600px;
+			margin: 20px auto;
+			padding-left: 0;
+			overflow: hidden;
+
 			li {
 				list-style-type: none;
+				width: 33.33%;
+				min-width: 200px;
+				float: left;
+
+				.recommend-color-info {
+					h3 {
+						text-align: center;
+						color: @h3Color;
+					}
+
+					.recommend-color-match {
+						margin: 0 auto;
+						width: 190px;
+						height: 200px;
+					}
+				}
 			}
 		}
 	}
