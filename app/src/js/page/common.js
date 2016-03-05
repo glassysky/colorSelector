@@ -7,6 +7,7 @@ function method(){
 	};
 
 	this.rbgIntoH = function(RGB){
+		var colorRGB = RGB.concat();
 
 		function makeUpNumber(num){
 			if(num < 10){
@@ -15,11 +16,11 @@ function method(){
 			return num;
 		}
 
-		RGB.map(function(num, key){
-			RGB[key] = makeUpNumber(parseInt(num, 16));
+		colorRGB.map(function(num, key){
+			colorRGB[key] = makeUpNumber(parseInt(num, 16));
 		});
 
-		return "#" + RGB.join("");
+		return "#" + colorRGB.join("");
 	};
 }
 

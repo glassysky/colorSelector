@@ -3,7 +3,8 @@ var common = require('./common');
 
 var MainColor = React.createClass({
 	render: function(){
-		var rgb = common.rbgIntoH(this.props.RGB);
+		var rgb = common.rbgIntoH(this.props.colorRGB);
+		// console.log(rgb);
 		var style = {
 			"backgroundColor": rgb
 		};
@@ -49,7 +50,7 @@ var ColorPanel = React.createClass({
 	render: function(){
 		return (
 			<div id="color-panel">
-				<MainColor RGB={this.props.RGB}/>
+				<MainColor colorRGB={this.props.colorRGB}/>
 				<RecommendColor />
 			</div>
 		);

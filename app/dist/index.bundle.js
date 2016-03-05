@@ -382,8 +382,8 @@ webpackJsonp([0,1],[
 			});
 		},
 		render: function () {
-			console.log(this.state.RGB);
-			return React.createElement("div", null, React.createElement(InfoPanel, { RGB: this.state.RGB, onUserInput: this.handleUserInput }), React.createElement(ColorPanel, { RGB: this.state.RGB }));
+			// console.log(this.state.RGB);
+			return React.createElement("div", null, React.createElement(InfoPanel, { colorRGB: this.state.RGB, onUserInput: this.handleUserInput }), React.createElement(ColorPanel, { colorRGB: this.state.RGB }));
 		}
 	});
 
@@ -20018,7 +20018,8 @@ webpackJsonp([0,1],[
 
 	var MainColor = React.createClass({ displayName: "MainColor",
 		render: function () {
-			var rgb = common.rbgIntoH(this.props.RGB);
+			var rgb = common.rbgIntoH(this.props.colorRGB);
+			// console.log(rgb);
 			var style = {
 				"backgroundColor": rgb
 			};
@@ -20047,7 +20048,7 @@ webpackJsonp([0,1],[
 	var ColorPanel = React.createClass({ displayName: "ColorPanel",
 
 		render: function () {
-			return React.createElement("div", { id: "color-panel" }, React.createElement(MainColor, { RGB: this.props.RGB }), React.createElement(RecommendColor, null));
+			return React.createElement("div", { id: "color-panel" }, React.createElement(MainColor, { colorRGB: this.props.colorRGB }), React.createElement(RecommendColor, null));
 		}
 	});
 
@@ -20066,6 +20067,7 @@ webpackJsonp([0,1],[
 		};
 
 		this.rbgIntoH = function (RGB) {
+			var colorRGB = RGB.concat();
 
 			function makeUpNumber(num) {
 				if (num < 10) {
@@ -20074,11 +20076,11 @@ webpackJsonp([0,1],[
 				return num;
 			}
 
-			RGB.map(function (num, key) {
-				RGB[key] = makeUpNumber(parseInt(num, 16));
+			colorRGB.map(function (num, key) {
+				colorRGB[key] = makeUpNumber(parseInt(num, 16));
 			});
 
-			return "#" + RGB.join("");
+			return "#" + colorRGB.join("");
 		};
 	}
 
@@ -20140,16 +20142,17 @@ webpackJsonp([0,1],[
 
 	var InfoConsole = React.createClass({ displayName: "InfoConsole",
 		render: function () {
-			var RGB = this.props.RGB;
-			RGB = common.rgbIntoString(RGB);
-			return React.createElement("div", { className: "console-panel" }, RGB);
+			var colorRGB = this.props.colorRGB;
+
+			colorRGB = common.rgbIntoString(colorRGB);
+			return React.createElement("div", { className: "console-panel" }, colorRGB);
 		}
 	});
 
 	var InfoPanel = React.createClass({ displayName: "InfoPanel",
 
 		render: function () {
-			return React.createElement("div", { id: "info-panel" }, React.createElement("h1", null, "Console"), React.createElement(InputWrap, { onUserInput: this.props.onUserInput }), React.createElement(InfoConsole, { RGB: this.props.RGB }));
+			return React.createElement("div", { id: "info-panel" }, React.createElement("h1", null, "Console"), React.createElement(InputWrap, { onUserInput: this.props.onUserInput }), React.createElement(InfoConsole, { colorRGB: this.props.colorRGB }));
 		}
 	});
 

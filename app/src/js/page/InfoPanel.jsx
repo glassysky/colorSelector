@@ -62,11 +62,12 @@ var InputWrap = React.createClass({
 
 var InfoConsole = React.createClass({
 	render: function(){
-		var RGB = this.props.RGB;
-		RGB = common.rgbIntoString(RGB);
+		var colorRGB = this.props.colorRGB;
+
+		colorRGB = common.rgbIntoString(colorRGB);
 		return (
 			<div className="console-panel">
-			{RGB}
+			{colorRGB}
 			</div>
 		);
 	}
@@ -79,7 +80,7 @@ var InfoPanel = React.createClass({
 			<div id="info-panel">
 				<h1>Console</h1>
 				<InputWrap onUserInput={this.props.onUserInput}/>
-				<InfoConsole RGB={this.props.RGB} />
+				<InfoConsole colorRGB={this.props.colorRGB} />
 			</div>
 		);
 	}

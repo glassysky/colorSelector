@@ -21,11 +21,11 @@ var Background = React.createClass({
   		});
   	},
 	render: function(){
-		console.log(this.state.RGB);
+		// console.log(this.state.RGB);
 		return (
 			<div>
-				<InfoPanel RGB={this.state.RGB} onUserInput={this.handleUserInput}/>
-				<ColorPanel RGB={this.state.RGB} />
+				<InfoPanel colorRGB={this.state.RGB} onUserInput={this.handleUserInput}/>
+				<ColorPanel colorRGB={this.state.RGB} />
 			</div>
 		);
 	}
