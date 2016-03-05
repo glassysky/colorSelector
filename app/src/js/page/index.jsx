@@ -5,6 +5,13 @@ var ColorPanel = require('./ColorPanel');
 var InfoPanel = require('./InfoPanel');
 
 var Background = React.createClass({
+	getInitialState: function() {
+    	return {
+    		R: 0,
+    		G: 0,
+    		B: 0
+    	};
+  	},
 	render: function(){
 		return (
 			<div>

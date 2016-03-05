@@ -43,7 +43,7 @@ webpackJsonp([0,1],[
 
 
 	// module
-	exports.push([module.id, "html,\nbody {\n  margin: 0;\n  padding: 0;\n  height: 100%;\n}\n#react {\n  height: 100%;\n  /*background-color: #aaa;*/\n  padding: 20px;\n}\n#react #color-panel {\n  margin-right: 320px;\n  height: 300px;\n  background-color: red;\n}\n#react #info-panel {\n  float: right;\n  width: 300px;\n  height: 200px;\n  border: 3px solid #aaa;\n  border-radius: 5px;\n}\n#react #info-panel h1 {\n  text-align: center;\n  color: #555;\n}\n", ""]);
+	exports.push([module.id, "html,\nbody {\n  margin: 0;\n  padding: 0;\n  height: 100%;\n}\n#react {\n  height: 100%;\n  padding: 20px;\n}\n#react #color-panel {\n  margin-right: 320px;\n}\n#react #info-panel {\n  float: right;\n  width: 300px;\n  border: 3px solid #aaa;\n  border-radius: 5px;\n}\n#react #info-panel h1 {\n  text-align: center;\n  color: #555;\n}\n#react #info-panel .input-wrap {\n  padding: 0 20px;\n}\n#react #info-panel .input-wrap .input-item {\n  border: 1px solid #aaa;\n  border-radius: 2px;\n  margin: 10px 0;\n}\n#react #info-panel .input-wrap .input-item .add-on {\n  display: inline-block;\n  height: 36px;\n  line-height: 34px;\n  background-color: #79CCD6;\n  text-align: center;\n  font-size: 1em;\n  font-weight: 700;\n  color: #fff;\n}\n#react #info-panel .input-wrap .input-item .add-on-left {\n  width: 30px;\n}\n#react #info-panel .input-wrap .input-item .add-on-right {\n  width: 50px;\n}\n#react #info-panel .input-wrap .input-item input {\n  height: 30px;\n  width: 174px;\n  text-align: center;\n  font-size: 1em;\n}\n#react #info-panel .console-panel {\n  height: 200px;\n  line-height: 200px;\n  margin: 20px;\n  border: 1px solid #aaa;\n  box-shadow: 1px 1px 1px 1px #aaa;\n  color: #00D8FF;\n  font-size: 1.2em;\n  font-weight: 400;\n  text-align: center;\n  background-color: #222;\n}\n#react #color-panel .main-color {\n  width: 50%;\n  margin: 0 auto;\n}\n#react #color-panel .recommend-color-list li {\n  list-style-type: none;\n}\n", ""]);
 
 	// exports
 
@@ -366,6 +366,13 @@ webpackJsonp([0,1],[
 	var InfoPanel = __webpack_require__(165);
 
 	var Background = React.createClass({ displayName: "Background",
+		getInitialState: function () {
+			return {
+				R: 0,
+				G: 0,
+				B: 0
+			};
+		},
 		render: function () {
 			return React.createElement("div", null, React.createElement(InfoPanel, null), React.createElement(ColorPanel, null));
 		}
@@ -19999,11 +20006,36 @@ webpackJsonp([0,1],[
 
 	var React = __webpack_require__(6);
 
+	var MainColor = React.createClass({ displayName: "MainColor",
+		render: function () {
+			var style = {
+				"backgroundColor": "red"
+			};
+
+			return React.createElement("div", { style: style, className: "main-color" });
+		}
+	});
+
+	var RecommendColor = React.createClass({ displayName: "RecommendColor",
+		render: function () {
+			var style = [{ "backgroundColor": "#000000" }, { "backgroundColor": "#000033" }, { "backgroundColor": "#003300" }, { "backgroundColor": "#003333" }, { "backgroundColor": "#330000" }];
+
+			return React.createElement("ul", { className: "recommend-color-list" }, style.map(function (color, key) {
+				return React.createElement(RecommendListItem, { key: key, styleData: style[key] });
+			}));
+		}
+	});
+
+	var RecommendListItem = React.createClass({ displayName: "RecommendListItem",
+		render: function () {
+			return React.createElement("li", { style: this.props.styleData });
+		}
+	});
+
 	var ColorPanel = React.createClass({ displayName: "ColorPanel",
 
 		render: function () {
-
-			return React.createElement("div", { id: "color-panel" });
+			return React.createElement("div", { id: "color-panel" }, React.createElement(MainColor, null), React.createElement(RecommendColor, null));
 		}
 	});
 
@@ -20015,10 +20047,32 @@ webpackJsonp([0,1],[
 
 	var React = __webpack_require__(6);
 
+	var InputItem = React.createClass({ displayName: "InputItem",
+		handleChange: function () {},
+		render: function () {
+			return React.createElement("div", { className: "input-item" }, React.createElement("span", { className: "add-on add-on-left" }, this.props.data), React.createElement("input", { type: "number", defaultValue: "0", className: this.props.data, onChange: this.handleChange }), React.createElement("span", { className: "add-on add-on-right" }, "0~255"));
+		}
+	});
+
+	var InputWrap = React.createClass({ displayName: "InputWrap",
+		render: function () {
+			var color = ['R', 'G', 'B'];
+			return React.createElement("div", { className: "input-wrap" }, color.map(function (color, key) {
+				return React.createElement(InputItem, { key: key, data: color });
+			}));
+		}
+	});
+
+	var InfoConsole = React.createClass({ displayName: "InfoConsole",
+		render: function () {
+			return React.createElement("div", { className: "console-panel" }, this.props.data);
+		}
+	});
+
 	var InfoPanel = React.createClass({ displayName: "InfoPanel",
 
 		render: function () {
-			return React.createElement("div", { id: "info-panel" }, React.createElement("h1", null, "Color"), React.createElement("div", { className: "" }));
+			return React.createElement("div", { id: "info-panel" }, React.createElement("h1", null, "Console"), React.createElement(InputWrap, null), React.createElement(InfoConsole, { data: "rgb(12,231,54)" }));
 		}
 	});
 
