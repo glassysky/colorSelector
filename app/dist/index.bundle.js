@@ -43,7 +43,7 @@ webpackJsonp([0,1],[
 
 
 	// module
-	exports.push([module.id, "html,\nbody {\n  margin: 0;\n  padding: 0;\n}\nhtml {\n  height: 100%;\n}\nbody {\n  height: 100%;\n}\n#react {\n  height: 100%;\n  background-color: #aaa;\n  padding: 20px;\n}\n", ""]);
+	exports.push([module.id, "html,\nbody {\n  margin: 0;\n  padding: 0;\n  height: 100%;\n}\n#react {\n  height: 100%;\n  /*background-color: #aaa;*/\n  padding: 20px;\n}\n#react #color-panel {\n  margin-right: 320px;\n  height: 300px;\n  background-color: red;\n}\n#react #info-panel {\n  float: right;\n  width: 300px;\n  height: 200px;\n  border: 3px solid #aaa;\n  border-radius: 5px;\n}\n#react #info-panel h1 {\n  text-align: center;\n  color: #555;\n}\n", ""]);
 
 	// exports
 
@@ -363,16 +363,17 @@ webpackJsonp([0,1],[
 	var ReactDOM = __webpack_require__(163);
 	// 引入其他组件
 	var ColorPanel = __webpack_require__(164);
+	var InfoPanel = __webpack_require__(165);
 
 	var Background = React.createClass({ displayName: "Background",
 		render: function () {
-			return React.createElement("div", null);
+			return React.createElement("div", null, React.createElement(InfoPanel, null), React.createElement(ColorPanel, null));
 		}
 	});
 
 	ReactDOM.render(React.createElement(Background, null), document.getElementById('react'));
 
-	module.exports = Index;
+	// module.exports = Index;
 
 /***/ },
 /* 6 */
@@ -19994,9 +19995,34 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 164 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	var ColorPanel = React.createClass;
+	var React = __webpack_require__(6);
+
+	var ColorPanel = React.createClass({ displayName: "ColorPanel",
+
+		render: function () {
+
+			return React.createElement("div", { id: "color-panel" });
+		}
+	});
+
+	module.exports = ColorPanel;
+
+/***/ },
+/* 165 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(6);
+
+	var InfoPanel = React.createClass({ displayName: "InfoPanel",
+
+		render: function () {
+			return React.createElement("div", { id: "info-panel" }, React.createElement("h1", null, "Color"), React.createElement("div", { className: "" }));
+		}
+	});
+
+	module.exports = InfoPanel;
 
 /***/ }
 ]);

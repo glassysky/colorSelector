@@ -2,4 +2,4 @@
 require('../../css/style.less');
 
 // 页面组件
-require('./index.jsx');
+require('./index');
