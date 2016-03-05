@@ -11,6 +11,11 @@ var InputItem = React.createClass({
 	handleChange: function(event){
 		var value = event.target.value;
 		var index = this.props.index;
+		if(value < 0){
+			value = 0;
+		} else if (value > 255){
+			value = 255;
+		}
 		this.setState({
 			value: value
 		});
@@ -78,7 +83,7 @@ var InfoPanel = React.createClass({
 	render: function(){
 		return (
 			<div id="info-panel">
-				<h1>Console</h1>
+				<h1>控制台</h1>
 				<InputWrap onUserInput={this.props.onUserInput}/>
 				<InfoConsole colorRGB={this.props.colorRGB} />
 			</div>

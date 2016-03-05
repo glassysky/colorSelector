@@ -4,7 +4,7 @@ var common = require('./common');
 var MainColor = React.createClass({
 	render: function(){
 		var rgb = common.rbgIntoH(this.props.colorRGB);
-		// console.log(rgb);
+
 		var style = {
 			"backgroundColor": rgb
 		};

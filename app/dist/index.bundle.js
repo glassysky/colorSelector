@@ -20019,7 +20019,7 @@ webpackJsonp([0,1],[
 	var MainColor = React.createClass({ displayName: "MainColor",
 		render: function () {
 			var rgb = common.rbgIntoH(this.props.colorRGB);
-			// console.log(rgb);
+
 			var style = {
 				"backgroundColor": rgb
 			};
@@ -20070,14 +20070,15 @@ webpackJsonp([0,1],[
 			var colorRGB = RGB.concat();
 
 			function makeUpNumber(num) {
-				if (num < 10) {
+				if (num.length < 2) {
 					num = "0" + num;
 				}
 				return num;
 			}
 
 			colorRGB.map(function (num, key) {
-				colorRGB[key] = makeUpNumber(parseInt(num, 16));
+				var num = parseInt(num);
+				colorRGB[key] = makeUpNumber(num.toString(16));
 			});
 
 			return "#" + colorRGB.join("");
@@ -20105,6 +20106,11 @@ webpackJsonp([0,1],[
 		handleChange: function (event) {
 			var value = event.target.value;
 			var index = this.props.index;
+			if (value < 0) {
+				value = 0;
+			} else if (value > 255) {
+				value = 255;
+			}
 			this.setState({
 				value: value
 			});
@@ -20152,7 +20158,7 @@ webpackJsonp([0,1],[
 	var InfoPanel = React.createClass({ displayName: "InfoPanel",
 
 		render: function () {
-			return React.createElement("div", { id: "info-panel" }, React.createElement("h1", null, "Console"), React.createElement(InputWrap, { onUserInput: this.props.onUserInput }), React.createElement(InfoConsole, { colorRGB: this.props.colorRGB }));
+			return React.createElement("div", { id: "info-panel" }, React.createElement("h1", null, "控制台"), React.createElement(InputWrap, { onUserInput: this.props.onUserInput }), React.createElement(InfoConsole, { colorRGB: this.props.colorRGB }));
 		}
 	});
 

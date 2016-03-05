@@ -10,14 +10,15 @@ function method(){
 		var colorRGB = RGB.concat();
 
 		function makeUpNumber(num){
-			if(num < 10){
+			if(num.length < 2){
 				num = "0" + num
 			}
 			return num;
 		}
 
 		colorRGB.map(function(num, key){
-			colorRGB[key] = makeUpNumber(parseInt(num, 16));
+			var num = parseInt(num);
+			colorRGB[key] = makeUpNumber(num.toString(16));
 		});
 
 		return "#" + colorRGB.join("");
