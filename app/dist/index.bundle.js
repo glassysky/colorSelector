@@ -20279,16 +20279,17 @@ webpackJsonp([0,1],[
 						} else {
 							color3[2] = color3[2] + range;
 						}
-					} else if (color2[0] < color2[1]) {
+					} else if (color2[1] < color2[0]) {
 						// 相等的较大，则减
 						range = Math.floor((color2[0] * 2 + color2[1]) * times);
+						console.log(1);
 
 						if (color1[0] - range < color1[1]) {
 							num = color1[1] - color1[0] + range;
 							color1[0] = color1[1];
 							color1[1] = color1[1] + num;
 						} else {
-							color1[0] = color1[0] + range;
+							color1[0] = color1[0] - range;
 						}
 
 						if (color3[2] - range < color3[1]) {
@@ -20296,7 +20297,7 @@ webpackJsonp([0,1],[
 							color3[2] = color3[1];
 							color3[1] = color3[1] + num;
 						} else {
-							color3[2] = color3[2] + range;
+							color3[2] = color3[2] - range;
 						}
 					}
 				} else {
