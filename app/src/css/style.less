@@ -69,8 +69,8 @@ html,body{margin: 0;padding: 0;height: 100%;}
 		}
 
 		.console-panel {
+			position: relative;
 			height: @consoleHeight;
-			line-height: 150px;
 			margin: 20px;
 			border: 1px solid @lightGrey;
 			box-shadow: 1px 1px 1px 1px @lightGrey;
@@ -81,13 +81,18 @@ html,body{margin: 0;padding: 0;height: 100%;}
 			background-color: @consoleBgc;
 
 			.text-wrap {
+				position: absolute;
+				top: 50%;
+				right: 50%;
 				width: 150px;
-				margin: 0 auto;
+				height: 70px;
+				margin-right: -75px;
+				margin-top: -35px;
 
 				span {
 					display: block;
 					height: 20px;
-					margin: 10px;
+					margin: 10px 0;
 				}
 			}
 		}
