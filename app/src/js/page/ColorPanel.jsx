@@ -64,14 +64,21 @@ var RecommendListItem = React.createClass({
 // 互补色、相似色、三角色、分散互补色、四方色、四方补色
 var RecommendColor = React.createClass({
 	render: function(){
+		var RGB = this.props.colorRGB;
+
+		var Complementarity = common.Complementarity(RGB);
+		// var Similarity = common.Complementarity(RGB);
+		var Similarity = common.Similarity(RGB);
+		// console.log(Similarity);
+
 		var info = [
 			{
 				"title": "Complementarity",
-				"color": ["red","blue"]
+				"color": Complementarity
 			}, 
 			{
 				"title": "Similarity",
-				"color": ["red","blue"]
+				"color": Similarity
 			}, 
 			{
 				"title": "Triangle",
