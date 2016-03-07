@@ -20070,20 +20070,24 @@ webpackJsonp([0,1],[
 			}, {
 				"title": "Similarity",
 				"color": Similarity
-			}, {
-				"title": "Triangle",
-				"color": ["red", "blue", "yellow"]
-			}, {
-				"title": "Dispers",
-				"color": ["red", "blue", "yellow"]
-			}, {
-				"title": "Square",
-				"color": ["red", "blue", "yellow", "green"]
-			}, {
-				"title": "SimilaritySquare",
-				"color": ["red", "blue", "yellow", "green"]
 			}];
 
+			// {
+			// 	"title": "Triangle",
+			// 	"color": ["red","blue","yellow"]
+			// },
+			// {
+			// 	"title": "Dispers",
+			// 	"color": ["red","blue","yellow"]
+			// },
+			// {
+			// 	"title": "Square",
+			// 	"color": ["red","blue","yellow","green"]
+			// },
+			// {
+			// 	"title": "SimilaritySquare",
+			// 	"color": ["red","blue","yellow","green"]
+			// },
 			return React.createElement("ul", { className: "recommend-color-list" }, info.map(function (color, key) {
 				return React.createElement(RecommendListItem, { key: key, info: info[key] });
 			}));

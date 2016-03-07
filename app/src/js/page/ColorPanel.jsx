@@ -80,22 +80,22 @@ var RecommendColor = React.createClass({
 				"title": "Similarity",
 				"color": Similarity
 			}, 
-			{
-				"title": "Triangle",
-				"color": ["red","blue","yellow"]
-			}, 
-			{
-				"title": "Dispers",
-				"color": ["red","blue","yellow"]
-			}, 
-			{
-				"title": "Square",
-				"color": ["red","blue","yellow","green"]
-			}, 
-			{
-				"title": "SimilaritySquare",
-				"color": ["red","blue","yellow","green"]
-			}, 
+			// {
+			// 	"title": "Triangle",
+			// 	"color": ["red","blue","yellow"]
+			// }, 
+			// {
+			// 	"title": "Dispers",
+			// 	"color": ["red","blue","yellow"]
+			// }, 
+			// {
+			// 	"title": "Square",
+			// 	"color": ["red","blue","yellow","green"]
+			// }, 
+			// {
+			// 	"title": "SimilaritySquare",
+			// 	"color": ["red","blue","yellow","green"]
+			// }, 
 		];
 
 		return (
