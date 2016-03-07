@@ -4,7 +4,6 @@ html,body{margin: 0;padding: 0;height: 100%;}
 @lightGrey: #aaa;
 @inputItemHeight: 30px;
 @addOnHeight: @inputItemHeight + 6;
-@addOnLineHeight: @inputItemHeight + 4;
 @addOnBgc: #79CCD6;
 @consoleColor: #00D8FF;
 @consoleBgc: #222;
@@ -36,14 +35,15 @@ html,body{margin: 0;padding: 0;height: 100%;}
 			padding: 0 20px;
 
 			.input-item {
-				border: 1px solid @lightGrey;
+				/*border: 1px solid @lightGrey;*/
+				width: 260px;
 				border-radius: 2px;
 				margin: 10px 0;
 
 				.add-on {
 					display: inline-block;
 					height: @addOnHeight;
-					line-height: @addOnLineHeight;
+					line-height: @addOnHeight;
 					background-color: @addOnBgc;
 					text-align: center;
 					font-size: 1em;
@@ -53,10 +53,12 @@ html,body{margin: 0;padding: 0;height: 100%;}
 
 				.add-on-left {
 					width: 30px;
+					float: left;
 				}
 
 				.add-on-right {
 					width: 50px;
+					float: right;
 				}
 
 				input {
@@ -64,6 +66,8 @@ html,body{margin: 0;padding: 0;height: 100%;}
 					width: 174px;
 					text-align: center;
 					font-size: 1em;
+					padding: 2px;
+					border: 1px solid @lightGrey;
 				}
 			}
 		}
